@@ -4,7 +4,10 @@
   "port": 5433,
   "username": "postgres",
   "password": "docker",
-  "database": "auth",
+  "database": "postgres",
+  "entities": [
+    "./src/models/*.ts"
+  ],
   "migrations": [
     "./src/database/migrations/*.ts"
   ],
