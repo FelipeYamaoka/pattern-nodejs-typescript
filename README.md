@@ -5,5 +5,5 @@
 - Dois fatores de autenticação
 
 ## Branches
-🚀 main - Apenas o escopo para dar início à novos projetos
+🚀 main - Apenas o escopo para dar início à novos projetos<br />
 📱  auth - Dois fatores de autenticação
