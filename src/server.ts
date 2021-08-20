@@ -1,7 +1,9 @@
 import express from 'express';
 
+import './database';
+
 const app = express();
 
 app.listen(3001, () => {
-    console.log('Server Started on port 3001');
-})
+  console.log('Server Started on port 3001');
+});
