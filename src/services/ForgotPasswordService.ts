@@ -36,19 +36,20 @@ class ForgotPasswordService {
       password_reset_expires: now,
     });
 
-    console.log(token, now);
-    console.log("O QUE TEM: ", user);
-
     delete user.password;
 
     await transport.sendMail({
       from: 'feh_yamaoka@outlook.com',
-      to: email,
+      to: 'fehyamaoka@gmail.com',
       subject: 'Email com nodemailer',
       text: 'Este é um email de teste',
       html: `<p>Olá ${user.name},</p></br>
       <p>Segue abaixo o código de autenticação para recuperar o seu acesso</p></br>
       <p>${token}</p>`
+    }).then(message => {
+      console.log(message);
+    }).catch(err => {
+      console.log(err);
     });
 
     return user;

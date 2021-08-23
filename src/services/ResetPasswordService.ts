@@ -22,25 +22,24 @@ class AuthenticateUserService {
       throw new AppError('O e-mail não é válido para esse código.');
     }
 
-    const validateToken = checkUserExists.password_reset_token;
 
-    if (!validateToken) {
+    if (checkUserExists.password_reset_token !== password_reset_token) {
       throw new AppError('O código não é válido para esse e-mail.');
+    } else {
+
+      const hashedPassword = await hash(password, 8);
+
+      const user = await usersRepository.save({
+        id: checkUserExists.id,
+        name: checkUserExists.name,
+        password: hashedPassword,
+        email,
+        password_reset_token: password_reset_token,
+        password_reset_expires: checkUserExists.password_reset_expires,
+      });
+
+      return user;
     }
-
-    const hashedPassword = await hash(password, 8);
-
-
-    const user = await usersRepository.save({
-      id: checkUserExists.id,
-      name: checkUserExists.name,
-      password: hashedPassword,
-      email,
-      password_reset_token: checkUserExists.password_reset_token,
-      password_reset_expires: checkUserExists.password_reset_expires,
-    });
-
-    return user;
   }
 }
 
