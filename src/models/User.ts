@@ -14,10 +14,10 @@ class User {
   @Column()
   password?: string;
 
-  @Column()
+  @Column({ nullable: true })
   password_reset_token: string;
 
-  @Column()
+  @Column({ nullable: true })
   password_reset_expires: Date;
 
   @CreateDateColumn()

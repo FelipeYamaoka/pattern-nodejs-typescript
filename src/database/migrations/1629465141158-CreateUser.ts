@@ -28,6 +28,16 @@ export default class CreateUser1629465141158 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'password_reset_token',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'password_reset_expires',
+            type: 'timestamp',
+            isNullable: true,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
